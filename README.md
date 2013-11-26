@@ -32,6 +32,7 @@ If you have any issues with implementation, please send an e-mail to both Jordan
 ### To-Do ###
 * GP: Write-up the Tutorial
 * JS: Figure out what can be trimmed off the JS file
+* JS: Contact the lady who proposed this idea for info on how we can implement this
 * Put the inline JS into a separate JS file
 * Add comments to clean up the code and help implementers understand
 
