@@ -5,7 +5,10 @@
     <meta charset="utf-8">
     <title>Find Your City Council District</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Copy the following links and scripts to your application -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css">
+    <!-- If you saved districts.js, underscore.js, and implement.js into a different path than ~/js -->
+    <!-- make sure you change it here and in the script inside <body> -->
     <script src="js/districts.js"></script>
     <script src="js/underscore.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -16,18 +19,22 @@
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-	<body>
-		<h1>Find Your City Council Member</h1>
-		
+<body>
+	<h1>Find Your City Council Member</h1>
+	
+	<!-- The important properties are the id's. Any edits to these must be reflected -->
+	<!-- in js/implement.js as well -->	
 	<input placeholder="Enter Your Address" type="text" id="address">
 	<input type="button" id="send" value="Submit">
 	<h1 id="result"></h1>
 	<h1 id="councilMember" style="display:inline"></h1>
 	<a style="font-size:2em;display:inline" id="url"></a>
+	<!-- If you are adding new data to the districts, you will need to add another -->
+	<!-- text piece, such as a header (<h1>) or paragraph (<p>) here and give it -->
+	<!-- a unique id. Emulate what is there for id="councilMember" -->
 
-
-<div id="map" style:"width: 600px; height: 400px">
-	<script src="js/implement.js"></script>
-		</div>
-	</body>
+	<div id="map" style:"width: 600px; height: 400px">
+		<script src="js/implement.js"></script>
+	</div>
+</body>
 </html>
