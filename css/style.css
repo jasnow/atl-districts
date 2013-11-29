@@ -12,9 +12,8 @@ input[type=text] {
 
 input[type=button] {
   border:solid 1px #030202;
-  padding:10px 15px;
-  margin:0 0 5px;
-  font-family:Arial, sans-serif; 
+  padding:10px 10px;
+  margin:0 0 20px;
   font-size:1em;
   text-transform:uppercase;
   font-weight:bold;
@@ -32,4 +31,12 @@ a {
   border: 2px solid black;
   margin: 10% 10%;
   padding: 5% 5%;
+}
+
+#error, #result, #councilMember, #url, #addReturned {
+  font-size:1.2em;
+}
+
+#councilMember {
+  display:inline;
 }
