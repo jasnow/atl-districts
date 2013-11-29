@@ -43,21 +43,37 @@ function initialize() {
 
 function codeAddress() {
 	var address = document.getElementById('address').value;
+  
 	geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results)
 			console.log(results[0].geometry.location["pb"]); // ob : ~33 pb : ~-84
-			var results = leafletPip.pointInLayer([results[0].geometry.location["pb"], results[0].geometry.location["ob"]], gjlayer);
-			var disNum = results[0]["feature"]["properties"]["DISTRICT"];
-			$('#result').text("You are in District " + (results[0]["feature"]["properties"]["DISTRICT"]));
-			$('#councilMember').text("Your council member is ");
-			$('#url').attr("href", url[disNum-1]);
-			$('#url').text(councilMember[disNum-1]);
-			// If you added a new variable, copy the style for councilMember as seen above
-			// Remember to also alter the HTML as seen in index.html
-		}
+      var city = results[0].formatted_address;
+      var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["pb"], results[0].geometry.location["ob"]], gjlayer);
+      console.log(city)
+      if (leaflet_results && (city.indexOf(", Atlanta, GA") !== -1) && (address.toLowerCase().indexOf("atlanta") !== -1)) {    // makes sure address is inside of Atlanta
+        var disNum = leaflet_results[0]["feature"]["properties"]["DISTRICT"];
+        var error = "";
+        if (results.length > 1) {
+        $('#error').text("We couldn't find an exact match so we searched for " + results[0].formatted_address);
+        }
+			  $('#result').text("You are in District " + disNum);
+			  $('#councilMember').text("Your council member is ");
+			  $('#url').attr("href", url[disNum-1]);
+			  $('#url').text(councilMember[disNum-1]);
+			  // If you added a new variable, copy the style for councilMember as seen above
+			  // Remember to also alter the HTML as seen in index.html
+      } else {
+        $('#result').text("Sorry, we couldn't find your address inside the city of Atlanta.");
+        $('#councilMember').text("");
+			  $('#url').text("");
+      }
+    } else {
+      $('#result').text("Sorry, we couldn't find your address.");
+      $('#councilMember').text("");
+			$('#url').text("");
+    }
 	});
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-			
-			
