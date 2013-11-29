@@ -43,6 +43,7 @@ function initialize() {
 
 function codeAddress() {
 	var address = document.getElementById('address').value;
+	var city = "";
   
 	geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -59,17 +60,20 @@ function codeAddress() {
         }
 			  $('#result').text("You are in District " + disNum);
 			  $('#councilMember').text("Your council member is ");
+			  $('#addReturned').text("Address: " + city);
 			  $('#url').attr("href", url[disNum-1]);
 			  $('#url').text(councilMember[disNum-1]);
 			  // If you added a new variable, copy the style for councilMember as seen above
 			  // Remember to also alter the HTML as seen in index.html
       } else {
-        $('#result').text("Sorry, we couldn't find your address inside the city of Atlanta.");
+        $('#result').text("Sorry, we couldn't find the following address inside the city of Atlanta.");
+        $('#addReturned').text("Address: " + city);
         $('#councilMember').text("");
 			  $('#url').text("");
       }
     } else {
       $('#result').text("Sorry, we couldn't find your address.");
+      $('#addReturned').text();
       $('#councilMember').text("");
 			$('#url').text("");
     }
