@@ -55,9 +55,6 @@ function codeAddress() {
       if (leaflet_results && (city.indexOf(", Atlanta, GA") !== -1)) {    // makes sure address is inside of Atlanta
         var disNum = leaflet_results[0]["feature"]["properties"]["DISTRICT"];
         var error = "";
-        if (results.length > 1) {
-        $('#error').text("We couldn't find an exact match so we searched for " + results[0].formatted_address);
-        }
 			  $('#result').text("You are in District " + disNum + ".");
 			  $('#councilMember').text("Your council member is ");
 			  $('#addReturned').text("Address: " + city);
@@ -65,9 +62,9 @@ function codeAddress() {
 			  $('#url').text(councilMember[disNum-1] + ".");
 			  // If you added a new variable, copy the style for councilMember as seen above
 			  // Remember to also alter the HTML as seen in index.html
+        	$('#addReturned').text("We searched for " + city + ".");
       } else {
         $('#result').text("Sorry, we couldn't find the following address inside the city of Atlanta.");
-        $('#addReturned').text("Address: " + city);
         $('#councilMember').text("");
 			  $('#url').text("");
       }
