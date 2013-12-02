@@ -18,16 +18,6 @@ L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/
 L.geoJson(districts).addTo(map);
 var gjlayer = L.geoJson(districts);
 
-console.log(results);
-var popup = L.popup();
-
-function onMapClick(e) {
-	popup
-		.setLatLng(e.latlng)
-		.setContent("You clicked the map at " + e.latlng.toString())
-		.openOn(map);
-}
-
 var results, geocoder, map;
 
 function initialize() {
@@ -44,14 +34,11 @@ function initialize() {
 function codeAddress() {
 	var address = document.getElementById('address').value;
 	var city = "";
-  
+	
 	geocoder.geocode( { 'address': address}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-      console.log(results)
-			console.log(results[0].geometry.location["pb"]); // ob : ~33 pb : ~-84
       var city = results[0].formatted_address;
       var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["pb"], results[0].geometry.location["ob"]], gjlayer);
-      console.log(city)
       if (leaflet_results && (city.indexOf(", Atlanta, GA") !== -1)) {    // makes sure address is inside of Atlanta
         var disNum = leaflet_results[0]["feature"]["properties"]["DISTRICT"];
         var error = "";
@@ -64,7 +51,7 @@ function codeAddress() {
 			  // Remember to also alter the HTML as seen in index.html
         	$('#addReturned').text("We searched for " + city + ".");
       } else {
-        $('#result').text("Sorry, we couldn't find the following address inside the city of Atlanta.");
+        $('#result').text("Sorry, we couldn't find this address inside the city of Atlanta.");
         $('#councilMember').text("");
 			  $('#url').text("");
       }

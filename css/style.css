@@ -1,5 +1,6 @@
 body {
   margin: 10% 10%;
+  background: url("../images/p5.png");
 }
 
 input[type=text] {
@@ -26,7 +27,8 @@ a {
 }
 
 #district {
-  color: 1C1C1B;
+  background: white;
+  color: #1C1C1B;
   font-family:Arial, sans-serif;
   border: 2px solid black;
   margin: 10% 10%;
