@@ -28,13 +28,12 @@ Note: We have taken a minimalist approach to this app. Make sure to follow these
 If you have any issues with implementation, please send an e-mail to both Jordan (jordan.streiff@gmail.com) and Gerry 
 (rgpass@gmail.com).
 
-## To-Do's and Brainstorm ##
-### To-Do ###
-* [X] GP: Write-up the Tutorial
-* JS: Figure out what can be trimmed off the JS file
-* JS: Contact the lady who proposed this idea for info on how we can implement this
-* [X] GP: Put the inline JS into a separate JS file
-* Add comments to clean up the code and help implementers understand
+## To-Do's ##
+
+ - clean up javascript
+ - improve address error handling
+ - improve embeddability
+ - improve/update readme for any changes
 
 ### New Features ###
 * Have users upload their own GeoJSON and similar type files
