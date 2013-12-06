@@ -36,9 +36,13 @@ function codeAddress() {
 	var city = "";
 	
 	geocoder.geocode( { 'address': address}, function(results, status) {
+
 		if (status == google.maps.GeocoderStatus.OK) {
+
       var city = results[0].formatted_address;
-      var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["pb"], results[0].geometry.location["ob"]], gjlayer);
+      
+      var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["qb"], results[0].geometry.location["pb"]], gjlayer);
+
       if (leaflet_results && (city.indexOf(", Atlanta, GA") !== -1)) {    // makes sure address is inside of Atlanta
         var disNum = leaflet_results[0]["feature"]["properties"]["DISTRICT"];
         var error = "";
