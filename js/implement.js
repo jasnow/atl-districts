@@ -41,8 +41,8 @@ function codeAddress() {
 
       var city = results[0].formatted_address;
       
-      var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["qb"], results[0].geometry.location["pb"]], gjlayer);
-
+      var leaflet_results = leafletPip.pointInLayer([results[0].geometry.location["ob"], results[0].geometry.location["nb"]], gjlayer);
+      console.log(results[0])
       if (leaflet_results && (city.indexOf(", Atlanta, GA") !== -1)) {    // makes sure address is inside of Atlanta
         var disNum = leaflet_results[0]["feature"]["properties"]["DISTRICT"];
         var error = "";
